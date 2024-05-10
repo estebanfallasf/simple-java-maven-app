@@ -22,7 +22,9 @@ pipeline {
         stage('Deliver') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                    sh './jenkins/scripts/deliver.sh'
+                    dir("simple-java-maven-app"){
+                        sh './jenkins/scripts/deliver.sh'
+                    }
                 }
             }
         }
